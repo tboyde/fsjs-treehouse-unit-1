@@ -18,15 +18,15 @@ const quotes = [
 {
     "quote": "I will just create, and if it works, it works, and if it doesn't, I'll create something else. I don't have any limitations on what I think I could do or be.",
     "source": "Oprah Winfrey",
-    "citation": "",
+    "citation": "'Oprah Winfrey speaks: insight from the world's most influential voice' by John Wiley & Sons",
     "year": "1998"
   }, 
 {
-    "quote": "3A truly creative person rids him or herself of all self-imposed limitations.",
+    "quote": "A truly creative person rids him or herself of all self-imposed limitations.",
     "source": "Gerald Jampolsky"
   }, 
 {
-    "quotes": "In life... we need to find a balance. You have to set rules and limitations - that is called discipline. And you have to practice that in all your worlds.",
+    "quote": "In life... we need to find a balance. You have to set rules and limitations - that is called discipline. And you have to practice that in all your worlds.",
     "source": "Cesar Millan",
     "citation": "Facebook",
     "year": "2004"
@@ -58,25 +58,35 @@ const quotes = [
 }
 
 ];
+// console.log(quotes.length); 
 
 /***
  * `getRandomQuote` function
 ***/
 
-function getRandomQuote() {
-  const randoNum = Math.floor(Math.random(quotes.length))
-  
-  
-  const randomGen = Math.floor(Math.random()*(highNum - lowNum +1))+ lowNum; 
-
+function getRandomQuote(){
+  const randomValue = Math.floor( Math.random() * (quotes.length -1)); 
+  return quotes[randomValue]; 
 }; 
-
-
 
 /***
  * `printQuote` function
 ***/
 
+function printQuote(){
+  let selectedQuote = getRandomQuote(); 
+  let displayHTML = 
+  `<p class="quote">${selectedQuote["quote"]}</p><p class="source">${selectedQuote["source"]}`
+    
+    if (selectedQuote["citation"]){
+      displayHTML += `<span class="citation">${selectedQuote["citation"]}</span>`  
+    } else if (selectedQuote["year"]) {
+      displayHTML += `<span class="year">${selectedQuote["year"]}</span>`
+    } else {
+      displayHTML += `</p>`
+    };
+  document.getElementById('quote-box').innerHTML = displayHTML; 
+}; 
 
 
 /***

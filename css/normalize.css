@@ -152,7 +152,7 @@ mark {
  */
 
 small {
-  font-size: 80%;
+  font-size: 50%;
 }
 
 /**
@@ -265,6 +265,7 @@ textarea {
 
 button {
   overflow: visible;
+  border-radius: 50%;
 }
 
 /**
