@@ -7,6 +7,10 @@ project 1 - A Random Quote Generator
 // Check the "Project Resources" section of the project instructions
 // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
+//automatic quote & background refresh
+const autoRefresh = setInterval(printQuote, 10000); 
+const refreshColor = setInterval(newBG,10000);
+
 /*** 
  * `quotes` array 
 ***/
@@ -84,16 +88,6 @@ function printQuote(){
     if(selectedQuote["tags"]){displayHTML += `<span class="tags">${selectedQuote["tags"]}</span>` }; 
     
     displayHTML += `</p>`
-
-    // if (selectedQuote["citation"]){
-    //   displayHTML += `<span class="citation">${selectedQuote["citation"]}</span>`  
-    // } else if (selectedQuote["year"]) {
-    //   displayHTML += `<span class="year">${selectedQuote["year"]}</span>`
-    // } else if(selectedQuote["tags"]){
-    //   `<span class="year">${selectedQuote["tags"]}</span>`
-    // } else {
-    //   displayHTML += `</p>`
-    // };
   document.getElementById('quote-box').innerHTML = displayHTML; 
 }; 
 
@@ -110,6 +104,8 @@ function newBG(){
   const colorValue = `rgb(${red}, ${green}, ${blue})`; 
   document.body.style.backgroundColor = colorValue; 
 }
+
+printQuote(); 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
@@ -117,5 +113,5 @@ function newBG(){
 document.getElementById('load-quote').addEventListener("click", newBG); 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
 
-const autoRefresh = setInterval(printQuote, 15000); 
+
 //clearInterval(autoRefresh); 
