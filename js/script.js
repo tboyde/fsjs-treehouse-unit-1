@@ -65,7 +65,7 @@ const quotes = [
 ***/
 
 function getRandomQuote(){
-  const randomValue = Math.floor( Math.random() * (quotes.length -1)); 
+  const randomValue = Math.floor( Math.random() * (quotes.length-1)); 
   return quotes[randomValue]; 
 }; 
 
@@ -89,6 +89,20 @@ function printQuote(){
 }; 
 
 
+function genRandomColor () {
+  return Math.floor(Math.random()* 256); 
+}; 
+
+function newBG(){
+  const red = genRandomColor(); 
+  const green = genRandomColor(); 
+  const blue = genRandomColor(); 
+
+  const colorValue = `rgb(${red}, ${green}, ${blue})`; 
+  document.body.style.backgroundColor = colorValue; 
+}
+
+document.getElementById('load-quote').addEventListener("click", newBG); 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
