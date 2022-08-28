@@ -19,11 +19,13 @@ const quotes = [
     "quote": "I will just create, and if it works, it works, and if it doesn't, I'll create something else. I don't have any limitations on what I think I could do or be.",
     "source": "Oprah Winfrey",
     "citation": "'Oprah Winfrey speaks: insight from the world's most influential voice' by John Wiley & Sons",
+    "tags": ", Inspirational, Postive Thinking", 
     "year": "1998"
   }, 
 {
     "quote": "A truly creative person rids him or herself of all self-imposed limitations.",
-    "source": "Gerald Jampolsky"
+    "source": "Gerald Jampolsky",
+    "tags": ",  Creativity"
   }, 
 {
     "quote": "In life... we need to find a balance. You have to set rules and limitations - that is called discipline. And you have to practice that in all your worlds.",
@@ -77,14 +79,21 @@ function printQuote(){
   let selectedQuote = getRandomQuote(); 
   let displayHTML = 
   `<p class="quote">${selectedQuote["quote"]}</p><p class="source">${selectedQuote["source"]}`
+    if(selectedQuote["citation"]){displayHTML += `<span class="citation">${selectedQuote["citation"]}</span>` };   
+    if(selectedQuote["year"]){displayHTML += `<span class="year">${selectedQuote["year"]}</span>` };   
+    if(selectedQuote["tags"]){displayHTML += `<span class="tags">${selectedQuote["tags"]}</span>` }; 
     
-    if (selectedQuote["citation"]){
-      displayHTML += `<span class="citation">${selectedQuote["citation"]}</span>`  
-    } else if (selectedQuote["year"]) {
-      displayHTML += `<span class="year">${selectedQuote["year"]}</span>`
-    } else {
-      displayHTML += `</p>`
-    };
+    displayHTML += `</p>`
+
+    // if (selectedQuote["citation"]){
+    //   displayHTML += `<span class="citation">${selectedQuote["citation"]}</span>`  
+    // } else if (selectedQuote["year"]) {
+    //   displayHTML += `<span class="year">${selectedQuote["year"]}</span>`
+    // } else if(selectedQuote["tags"]){
+    //   `<span class="year">${selectedQuote["tags"]}</span>`
+    // } else {
+    //   displayHTML += `</p>`
+    // };
   document.getElementById('quote-box').innerHTML = displayHTML; 
 }; 
 
@@ -101,11 +110,12 @@ function newBG(){
   const colorValue = `rgb(${red}, ${green}, ${blue})`; 
   document.body.style.backgroundColor = colorValue; 
 }
-
-document.getElementById('load-quote').addEventListener("click", newBG); 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
-
+document.getElementById('load-quote').addEventListener("click", newBG); 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
+const autoRefresh = setInterval(printQuote, 15000); 
+//clearInterval(autoRefresh); 
